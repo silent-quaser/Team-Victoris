@@ -1,0 +1,35 @@
+# GridGuard — Python Dependencies
+# Install: pip install -r requirements.txt
+
+# Web framework
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+pydantic==2.9.2
+httpx==0.27.2
+
+# Grid simulation (pandapower 3.5.4+ required for numpy 2.x compatibility)
+pandapower>=3.5.4
+numpy>=1.26,<2.5
+
+# Graph analysis
+networkx>=3.6
+
+# Data processing
+pandas>=2.3
+
+# ML
+xgboost>=2.0
+scikit-learn>=1.4
+
+# Testing
+pytest>=8.3
+pytest-asyncio>=0.24
+anyio>=4.4
+
+# Utilities
+python-dateutil>=2.9
+scipy>=1.12
+tqdm>=4.68
+
+# Data pipeline
+# (no extra packages needed; urllib.request and zipfile are in stdlib)

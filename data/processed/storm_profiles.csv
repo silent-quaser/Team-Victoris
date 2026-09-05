@@ -1,0 +1,6 @@
+event_type,description,mean_duration_hours,std_duration_hours,mean_customers_affected,mean_mw_affected,line_failure_prob_base,transformer_failure_prob_base,line_failure_prob_exposed,multi_fault_prob,weather_severity,wind_kmh_mean,wind_kmh_std,rain_mm_mean,rain_mm_std,sample_count,data_source
+SEVERE_STORM,Severe thunderstorm / convective event,18.5,12.0,145000,290.0,0.25,0.12,0.45,0.35,0.75,85.0,20.0,35.0,18.0,1250,empirical_ieee_doe_defaults
+HURRICANE,Hurricane / tropical storm,72.0,48.0,890000,1780.0,0.55,0.3,0.8,0.75,0.95,145.0,25.0,120.0,40.0,215,empirical_ieee_doe_defaults
+ICE_STORM,Ice / freezing rain event,42.0,24.0,215000,430.0,0.3,0.08,0.55,0.45,0.8,45.0,15.0,0.0,0.0,380,empirical_ieee_doe_defaults
+HIGH_WIND,High wind without precipitation,8.0,6.0,45000,90.0,0.12,0.04,0.28,0.15,0.55,95.0,18.0,5.0,5.0,620,empirical_ieee_doe_defaults
+NORMAL,Normal operating conditions (no weather event),2.5,2.0,2500,5.0,0.02,0.005,0.04,0.03,0.05,15.0,8.0,2.0,5.0,5200,empirical_ieee_doe_defaults
