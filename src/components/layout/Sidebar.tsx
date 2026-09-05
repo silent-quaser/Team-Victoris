@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useGridStore } from '@/store/grid-store';
 import {
   Shield,
   LayoutDashboard,
@@ -82,6 +83,26 @@ function NavSection({ label, items }: { label: string; items: NavItem[] }) {
   );
 }
 
+function SidebarStatus() {
+  const settings = useGridStore(s => s.settings);
+  const modeLabel = settings.simulationMode === 'local' ? 'Local Simulation' 
+    : settings.simulationMode === 'connected' ? 'Live SCADA' : 'Historical Playback';
+  const modeColor = settings.simulationMode === 'local' ? 'bg-green-500' 
+    : settings.simulationMode === 'connected' ? 'bg-blue-500' : 'bg-amber-500';
+  const modeDesc = settings.simulationMode === 'local' ? 'IEEE 33-Bus mock data' 
+    : settings.simulationMode === 'connected' ? 'Connected to SCADA feed' : 'Playback: 2024-11-27';
+
+  return (
+    <div className="border-t border-slate-200 px-3 py-3">
+      <div className="text-[10px] uppercase tracking-wider text-slate-400 mb-2">{modeLabel}</div>
+      <div className="flex items-center gap-2 mb-1">
+        <span className={`w-1.5 h-1.5 rounded-full ${modeColor}`} />
+        <span className="text-[11px] text-slate-500">{modeDesc}</span>
+      </div>
+    </div>
+  );
+}
+
 export default function Sidebar() {
   return (
     <aside className="fixed left-0 top-0 w-56 h-screen bg-white border-r border-slate-200 flex flex-col z-30">
@@ -105,22 +126,7 @@ export default function Sidebar() {
         <NavSection label="System" items={systemItems} />
       </div>
 
-      {/* Bottom status */}
-      <div className="border-t border-slate-200 px-3 py-3">
-        <div className="text-[10px] uppercase tracking-wider text-slate-400 mb-2">
-          Local Simulation
-        </div>
-        <div className="flex items-center gap-2 mb-1">
-          <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
-          <span className="text-[11px] text-slate-500">Core systems local</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-slate-400" />
-          <span className="text-[11px] text-slate-500">
-            External connectivity not required
-          </span>
-        </div>
-      </div>
+      <SidebarStatus />
     </aside>
   );
 }

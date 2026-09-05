@@ -96,7 +96,11 @@ export default function ActivityLogPage() {
           {filteredLogs.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-slate-500 py-12">
               <Filter className="w-8 h-8 mb-2 opacity-20" />
-              <p>No log entries found for this filter.</p>
+              {searchQuery.trim() !== '' ? (
+                <p>No logs matched <span className="font-semibold text-slate-600">"{searchQuery}"</span>. Try a different keyword.</p>
+              ) : (
+                <p>No log entries found for this filter.</p>
+              )}
             </div>
           ) : (
             <div className="divide-y divide-slate-100">

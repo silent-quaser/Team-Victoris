@@ -47,9 +47,9 @@ export default function SettingsPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 items-center pt-4 border-t border-slate-100">
-              <label className="text-sm font-medium text-slate-700">Simulation Mode</label>
-              <div className="md:col-span-2">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 items-start pt-4 border-t border-slate-100">
+              <label className="text-sm font-medium text-slate-700 pt-2">Simulation Mode</label>
+              <div className="md:col-span-2 flex flex-col gap-2">
                 <select 
                   value={settings.simulationMode}
                   onChange={(e) => updateSettings({ simulationMode: e.target.value as any })}
@@ -59,6 +59,25 @@ export default function SettingsPage() {
                   <option value="connected">Connected (Live)</option>
                   <option value="historical">Historical Playback</option>
                 </select>
+                {/* Feedback badge — so the change is visibly meaningful */}
+                {settings.simulationMode === 'local' && (
+                  <div className="flex items-center gap-2 px-3 py-2 rounded-md bg-green-50 border border-green-200 text-sm text-green-700 w-fit">
+                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                    <span className="font-medium">Active:</span> Running on mock IEEE 33-Bus data. No external connectivity required.
+                  </div>
+                )}
+                {settings.simulationMode === 'connected' && (
+                  <div className="flex items-center gap-2 px-3 py-2 rounded-md bg-blue-50 border border-blue-200 text-sm text-blue-700 w-fit">
+                    <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+                    <span className="font-medium">Active:</span> Connected mode — attempting live SCADA data feed. Ensure API endpoint is reachable.
+                  </div>
+                )}
+                {settings.simulationMode === 'historical' && (
+                  <div className="flex items-center gap-2 px-3 py-2 rounded-md bg-amber-50 border border-amber-200 text-sm text-amber-700 w-fit">
+                    <span className="w-2 h-2 rounded-full bg-amber-500" />
+                    <span className="font-medium">Active:</span> Historical playback of Severe Storm Event — 2024-11-27. Data is read-only.
+                  </div>
+                )}
               </div>
             </div>
 
@@ -103,9 +122,9 @@ export default function SettingsPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 items-center">
-              <label className="text-sm font-medium text-slate-700">Grid visualization</label>
-              <div className="md:col-span-2">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 items-start">
+              <label className="text-sm font-medium text-slate-700 pt-2">Grid visualization</label>
+              <div className="md:col-span-2 flex flex-col gap-2">
                 <select 
                   value={settings.gridVisualization}
                   onChange={(e) => updateSettings({ gridVisualization: e.target.value as any })}
@@ -115,6 +134,11 @@ export default function SettingsPage() {
                   <option value="geo">Geospatial View</option>
                   <option value="list">List View</option>
                 </select>
+                <p className="text-xs text-slate-500">
+                  {settings.gridVisualization === 'network' && '🗺 Showing IEEE 33-Bus interactive network topology on Overview.'}
+                  {settings.gridVisualization === 'geo' && '📍 Showing real-world geographic map of Guindy, Chennai on Overview.'}
+                  {settings.gridVisualization === 'list' && '📋 Showing sortable asset list with status on Overview.'}
+                </p>
               </div>
             </div>
 

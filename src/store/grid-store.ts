@@ -188,7 +188,6 @@ export const useGridStore = create<GridStore>((set, get) => ({
     const updatedBuses = state.gridState.buses.map(b => ({ ...b, status: 'healthy' as const }));
     const updatedLines = state.gridState.lines.map(l => ({ ...l, status: 'healthy' as const }));
     const updatedTransformers = state.gridState.transformers.map(t => ({ ...t, status: 'healthy' as const }));
-    const updatedFaults = state.gridState.scenario.faults.map(f => ({ ...f, status: 'healthy' as const }));
 
     const newLogEntry: ActivityEntry = {
       id: `log-${Date.now()}`,
@@ -200,7 +199,7 @@ export const useGridStore = create<GridStore>((set, get) => ({
     };
 
     const newRestoration: RestorationProgress = {
-      current_stage: 'completed',
+      current_stage: 're_evaluate',
       pct_complete: 100,
       stages: state.gridState.restoration.stages.map(stage => ({
         ...stage,
@@ -218,7 +217,11 @@ export const useGridStore = create<GridStore>((set, get) => ({
         services: updatedServices,
         scenario: {
           ...state.gridState.scenario,
-          faults: updatedFaults,
+          faults: state.gridState.scenario.faults.map(f => ({
+            ...f,
+            status: 'uncertain' as const,
+            confidence_pct: 0
+          })),
           is_active: false,
         },
         recommendation: null as any, // Clear recommendation for completion state
