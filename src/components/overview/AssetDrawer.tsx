@@ -218,11 +218,23 @@ export default function AssetDrawer() {
         
         {/* Footer Actions */}
         <div className="p-4 border-t border-slate-200 bg-slate-50 flex space-x-3">
-          <button className="flex-1 bg-white border border-slate-300 text-slate-700 py-2 rounded-md text-sm font-medium hover:bg-slate-50 transition-colors shadow-sm">
-            View History
+          <button 
+            onClick={() => {
+              useGridStore.getState().addLog(`Triggered automated isolation sequence for ${assetType} ${asset.id}`, 'warning');
+              closeAssetDrawer();
+            }}
+            className="flex-1 bg-white border border-red-300 text-red-700 py-2 rounded-md text-sm font-medium hover:bg-red-50 transition-colors shadow-sm"
+          >
+            Isolate Asset
           </button>
-          <button className="flex-1 bg-blue-600 text-white py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors shadow-sm">
-            Take Action
+          <button 
+            onClick={() => {
+              useGridStore.getState().addLog(`Dispatched Field Crew to ${assetType} ${asset.id}`, 'success');
+              closeAssetDrawer();
+            }}
+            className="flex-1 bg-blue-600 text-white py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors shadow-sm"
+          >
+            Dispatch Crew
           </button>
         </div>
       </div>

@@ -33,18 +33,18 @@ import numpy as np
 
 # (bus_idx 0-based in case33bw, load_name, p_mw, q_mvar, service_id)
 CRITICAL_SERVICE_LOADS = [
-    (5,  "HOSPITAL",        2.4,  0.8,  "HOSPITAL"),
-    (9,  "WATER_PLANT",     1.8,  0.6,  "WATER_PLANT"),
-    (17, "EMERGENCY_CENTER",0.8,  0.2,  "EMERGENCY_CENTER"),
-    (21, "TELECOM_TOWER",   0.6,  0.1,  "TELECOM_TOWER"),
+    (6,  "EMERGENCY_CENTER", 0.2,  0.05, "EMERGENCY_CENTER"),
+    (10, "HOSPITAL",         0.6,  0.2,  "HOSPITAL"),
+    (12, "WATER_PLANT",      0.45, 0.15, "WATER_PLANT"),
+    (25, "TELECOM_TOWER",    0.15, 0.025, "TELECOM_TOWER"),
 ]
 
 # Bus indices of major components for fault injection (0-based)
 BUS_TO_ASSET: Dict[int, str] = {
-    5:  "BUS_6",
-    9:  "BUS_10",
-    17: "BUS_18",
-    21: "BUS_22",
+    6:  "BUS_7",
+    10: "BUS_11",
+    12: "BUS_13",
+    25: "BUS_26",
 }
 
 # Line indices → asset IDs (line DataFrame index, 0-based)
@@ -92,7 +92,8 @@ def build_ieee33_net(with_tie_switches: bool = True) -> pp.pandapowerNet:
         net.load.at[idx, "service_id"] = svc_id
 
     # Mark original loads as non-critical
-    net.load["critical_service"] = net.load["critical_service"].fillna(False).astype(bool)
+    net.load["critical_service"] = net.load["critical_service"].fillna(False)
+    net.load["critical_service"] = net.load["critical_service"].astype(bool)
 
     # ── Add asset_id to lines ───────────────────────────────────────────────
     if "asset_id" not in net.line.columns:

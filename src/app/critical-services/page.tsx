@@ -110,8 +110,8 @@ export default function CriticalServicesPage() {
                 <Clock className="w-4 h-4 text-slate-400" />
                 <div>
                   <div className="text-xs text-slate-500">Est. Restoration</div>
-                  <div className="text-sm font-medium text-slate-700">
-                    {service.estimated_restore ? new Date(service.estimated_restore).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : 'TBD'}
+                  <div className="text-sm font-medium text-slate-700" suppressHydrationWarning>
+                    {service.estimated_restore ? new Date(service.estimated_restore).toLocaleTimeString('en-IN', {hour: '2-digit', minute:'2-digit', hour12: true}) : 'TBD'}
                   </div>
                 </div>
               </div>

@@ -17,8 +17,12 @@ export interface Bus {
   has_der: boolean;
   is_critical: boolean;
   critical_facility?: string;
-  x: number;       // layout x position (for visualization)
-  y: number;       // layout y position (for visualization)
+  x: number;       // logical layout x position (for ReactFlow)
+  y: number;       // logical layout y position (for ReactFlow)
+  latitude?: number;  // Real geographic lat
+  longitude?: number; // Real geographic lng
+  lat?: number;       // Legacy
+  lng?: number;       // Legacy
   feeder?: string;
 }
 

@@ -34,10 +34,10 @@ from grid.ieee33 import CRITICAL_SERVICE_LOADS
 
 # Critical service definitions (bus_idx, service_id, mw)
 CRITICAL_SERVICES = [
-    {"service_id": "HOSPITAL",         "bus_idx": 5,  "p_mw": 2.4, "weight": 1.00},
-    {"service_id": "WATER_PLANT",      "bus_idx": 9,  "p_mw": 1.8, "weight": 0.95},
-    {"service_id": "EMERGENCY_CENTER", "bus_idx": 17, "p_mw": 0.8, "weight": 0.90},
-    {"service_id": "TELECOM_TOWER",    "bus_idx": 21, "p_mw": 0.6, "weight": 0.75},
+    {"service_id": "EMERGENCY_CENTER", "bus_idx": 6,  "p_mw": 0.2, "weight": 0.90},
+    {"service_id": "HOSPITAL",         "bus_idx": 10, "p_mw": 0.6, "weight": 1.00},
+    {"service_id": "WATER_PLANT",      "bus_idx": 12, "p_mw": 0.45, "weight": 0.95},
+    {"service_id": "TELECOM_TOWER",    "bus_idx": 25, "p_mw": 0.15, "weight": 0.75},
 ]
 
 

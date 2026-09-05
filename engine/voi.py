@@ -162,9 +162,9 @@ def calculate_voi(target_asset: str, state: GridStateModel) -> VOIResult:
     # Step 1: failure probability
     p_fail = 0.5  # default if uncertain
     
-    from uncertainty.belief import get_uncertainty
-    belief = get_uncertainty(target_asset)
-    if belief is not None:
+    from uncertainty.belief import get_uncertainty, _BELIEFS
+    if target_asset in _BELIEFS:
+        belief = get_uncertainty(target_asset)
         p_fail = belief.p_failed
     else:
         for fault in state.faults.values():

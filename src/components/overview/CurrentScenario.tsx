@@ -1,5 +1,6 @@
 'use client';
 
+import React, { useState, useEffect } from 'react';
 import { CloudLightning } from 'lucide-react';
 import { useGridStore } from '@/store/grid-store';
 
@@ -11,13 +12,15 @@ const statusBadge: Record<string, string> = {
 export default function CurrentScenario() {
   const scenario = useGridStore((s) => s.gridState.scenario);
 
-  const started = new Date(scenario.started_at).toLocaleString('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-  });
+  const [started, setStarted] = useState<string>('');
+  
+  useEffect(() => {
+    setStarted(new Date(scenario.started_at).toLocaleString('en-IN', {
+      day: '2-digit', month: 'short', year: 'numeric',
+      hour: '2-digit', minute: '2-digit', hour12: true,
+      timeZone: 'Asia/Kolkata'
+    }) + ' IST');
+  }, [scenario.started_at]);
 
   return (
     <div className="bg-white border border-slate-200 rounded-lg p-4">

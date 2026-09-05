@@ -10,43 +10,43 @@ import {
 
 export const mockBuses: Bus[] = [
   // Substation
-  { id: 'bus-1', number: 1, name: 'Substation', status: 'healthy', voltage_kv: 12.66, load_mw: 0, has_der: false, is_critical: false, x: 50, y: 300, feeder: 'main' },
+  { id: 'bus-1', number: 1, name: 'Substation', status: 'healthy', voltage_kv: 12.66, load_mw: 0, has_der: false, is_critical: false, latitude: 13.006700, longitude: 80.220600, x: 50, y: 300, feeder: 'main' },
   // Main Feeder F1 (buses 2–18)
-  { id: 'bus-2', number: 2, name: 'Bus 2', status: 'healthy', voltage_kv: 12.62, load_mw: 0.1, has_der: false, is_critical: false, x: 150, y: 300, feeder: 'F1' },
-  { id: 'bus-3', number: 3, name: 'Bus 3', status: 'healthy', voltage_kv: 12.58, load_mw: 0.09, has_der: false, is_critical: false, x: 250, y: 300, feeder: 'F1' },
-  { id: 'bus-4', number: 4, name: 'Bus 4', status: 'healthy', voltage_kv: 12.54, load_mw: 0.12, has_der: false, is_critical: false, x: 350, y: 300, feeder: 'F1' },
-  { id: 'bus-5', number: 5, name: 'Bus 5', status: 'healthy', voltage_kv: 12.50, load_mw: 0.06, has_der: false, is_critical: false, x: 450, y: 300, feeder: 'F1' },
-  { id: 'bus-6', number: 6, name: 'Bus 6', status: 'healthy', voltage_kv: 12.46, load_mw: 0.06, has_der: true, is_critical: false, x: 550, y: 300, feeder: 'F1' },
-  { id: 'bus-7', number: 7, name: 'Bus 7', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: false, x: 650, y: 300, feeder: 'F1' },
-  { id: 'bus-8', number: 8, name: 'Bus 8', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: false, x: 750, y: 300, feeder: 'F1' },
-  { id: 'bus-9', number: 9, name: 'Bus 9', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: true, critical_facility: 'Hospital', x: 850, y: 300, feeder: 'F1' },
-  { id: 'bus-10', number: 10, name: 'Bus 10', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: false, x: 950, y: 300, feeder: 'F1' },
-  { id: 'bus-11', number: 11, name: 'Bus 11', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: false, x: 1050, y: 300, feeder: 'F1' },
-  { id: 'bus-12', number: 12, name: 'Bus 12', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: false, x: 1150, y: 300, feeder: 'F1' },
-  { id: 'bus-13', number: 13, name: 'Bus 13', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: true, is_critical: true, critical_facility: 'Water Plant', x: 1250, y: 300, feeder: 'F1' },
-  { id: 'bus-14', number: 14, name: 'Bus 14', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: false, x: 1350, y: 300, feeder: 'F1' },
-  { id: 'bus-15', number: 15, name: 'Bus 15', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: false, x: 1450, y: 300, feeder: 'F1' },
-  { id: 'bus-16', number: 16, name: 'Bus 16', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: false, x: 1550, y: 300, feeder: 'F1' },
-  { id: 'bus-17', number: 17, name: 'Bus 17', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: false, x: 1650, y: 300, feeder: 'F1' },
-  { id: 'bus-18', number: 18, name: 'Bus 18', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: false, x: 1750, y: 300, feeder: 'F1' },
+  { id: 'bus-2', number: 2, name: 'Bus 2', status: 'healthy', voltage_kv: 12.62, load_mw: 0.1, has_der: false, is_critical: false, latitude: 13.007645, longitude: 80.221197, x: 150, y: 300, feeder: 'F1' },
+  { id: 'bus-3', number: 3, name: 'Bus 3', status: 'healthy', voltage_kv: 12.58, load_mw: 0.09, has_der: false, is_critical: true, critical_facility: 'Apollo Hospital Guindy', latitude: 13.008617, longitude: 80.221977, x: 250, y: 300, feeder: 'F1' },
+  { id: 'bus-4', number: 4, name: 'Bus 4', status: 'healthy', voltage_kv: 12.54, load_mw: 0.12, has_der: false, is_critical: false, latitude: 13.009413, longitude: 80.223429, x: 350, y: 300, feeder: 'F1' },
+  { id: 'bus-5', number: 5, name: 'Bus 5', status: 'healthy', voltage_kv: 12.50, load_mw: 0.06, has_der: false, is_critical: false, latitude: 13.010588, longitude: 80.224411, x: 450, y: 300, feeder: 'F1' },
+  { id: 'bus-6', number: 6, name: 'Bus 6', status: 'healthy', voltage_kv: 12.46, load_mw: 0.06, has_der: true, is_critical: false, latitude: 13.011423, longitude: 80.225071, x: 550, y: 300, feeder: 'F1' },
+  { id: 'bus-7', number: 7, name: 'Bus 7', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: true, critical_facility: 'MIOT International', latitude: 13.012345, longitude: 80.225864, x: 650, y: 300, feeder: 'F1' },
+  { id: 'bus-8', number: 8, name: 'Bus 8', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: false, latitude: 13.012879, longitude: 80.226944, x: 750, y: 300, feeder: 'F1' },
+  { id: 'bus-9', number: 9, name: 'Bus 9', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: false, latitude: 13.014382, longitude: 80.227815, x: 850, y: 300, feeder: 'F1' },
+  { id: 'bus-10', number: 10, name: 'Bus 10', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: true, critical_facility: 'Fortis Malar Hospital', latitude: 13.015405, longitude: 80.228400, x: 950, y: 300, feeder: 'F1' },
+  { id: 'bus-11', number: 11, name: 'Bus 11', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: false, latitude: 13.016238, longitude: 80.229306, x: 1050, y: 300, feeder: 'F1' },
+  { id: 'bus-12', number: 12, name: 'Bus 12', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: false, latitude: 13.017199, longitude: 80.230088, x: 1150, y: 300, feeder: 'F1' },
+  { id: 'bus-13', number: 13, name: 'Bus 13', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: true, is_critical: false, latitude: 13.018308, longitude: 80.231394, x: 1250, y: 300, feeder: 'F1' },
+  { id: 'bus-14', number: 14, name: 'Bus 14', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: true, critical_facility: 'BSNL Exchange Guindy', latitude: 13.019930, longitude: 80.232253, x: 1350, y: 300, feeder: 'F1' },
+  { id: 'bus-15', number: 15, name: 'Bus 15', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: false, latitude: 13.020758, longitude: 80.233391, x: 1450, y: 300, feeder: 'F1' },
+  { id: 'bus-16', number: 16, name: 'Bus 16', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: false, latitude: 13.021675, longitude: 80.233955, x: 1550, y: 300, feeder: 'F1' },
+  { id: 'bus-17', number: 17, name: 'Bus 17', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: false, latitude: 13.022659, longitude: 80.235373, x: 1650, y: 300, feeder: 'F1' },
+  { id: 'bus-18', number: 18, name: 'Bus 18', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: true, critical_facility: 'Airtel Network Hub', latitude: 13.023532, longitude: 80.236325, x: 1750, y: 300, feeder: 'F1' },
   // Branch from Bus 2 (buses 19–22)
-  { id: 'bus-19', number: 19, name: 'Bus 19', status: 'healthy', voltage_kv: 12.60, load_mw: 0.09, has_der: false, is_critical: false, x: 150, y: 150, feeder: 'F2' },
-  { id: 'bus-20', number: 20, name: 'Bus 20', status: 'healthy', voltage_kv: 12.58, load_mw: 0.09, has_der: false, is_critical: false, x: 250, y: 150, feeder: 'F2' },
-  { id: 'bus-21', number: 21, name: 'Bus 21', status: 'healthy', voltage_kv: 12.56, load_mw: 0.09, has_der: false, is_critical: false, x: 350, y: 150, feeder: 'F2' },
-  { id: 'bus-22', number: 22, name: 'Bus 22', status: 'healthy', voltage_kv: 12.54, load_mw: 0.09, has_der: true, is_critical: false, x: 450, y: 150, feeder: 'F2' },
+  { id: 'bus-19', number: 19, name: 'Bus 19', status: 'healthy', voltage_kv: 12.60, load_mw: 0.09, has_der: false, is_critical: false, latitude: 13.006771, longitude: 80.222324, x: 150, y: 150, feeder: 'F2' },
+  { id: 'bus-20', number: 20, name: 'Bus 20', status: 'healthy', voltage_kv: 12.58, load_mw: 0.09, has_der: false, is_critical: false, latitude: 13.005436, longitude: 80.223355, x: 250, y: 150, feeder: 'F2' },
+  { id: 'bus-21', number: 21, name: 'Bus 21', status: 'healthy', voltage_kv: 12.56, load_mw: 0.09, has_der: false, is_critical: true, critical_facility: 'Guindy Water Station', latitude: 13.004877, longitude: 80.224280, x: 350, y: 150, feeder: 'F2' },
+  { id: 'bus-22', number: 22, name: 'Bus 22', status: 'healthy', voltage_kv: 12.54, load_mw: 0.09, has_der: true, is_critical: false, latitude: 13.004019, longitude: 80.225073, x: 450, y: 150, feeder: 'F2' },
   // Branch from Bus 3 (buses 23–25)
-  { id: 'bus-23', number: 23, name: 'Bus 23', status: 'healthy', voltage_kv: 12.56, load_mw: 0.09, has_der: false, is_critical: false, x: 250, y: 450, feeder: 'F3' },
-  { id: 'bus-24', number: 24, name: 'Bus 24', status: 'healthy', voltage_kv: 12.54, load_mw: 0.42, has_der: false, is_critical: true, critical_facility: 'Emergency Center', x: 350, y: 450, feeder: 'F3' },
-  { id: 'bus-25', number: 25, name: 'Bus 25', status: 'healthy', voltage_kv: 12.52, load_mw: 0.42, has_der: false, is_critical: false, x: 450, y: 450, feeder: 'F3' },
+  { id: 'bus-23', number: 23, name: 'Bus 23', status: 'healthy', voltage_kv: 12.56, load_mw: 0.09, has_der: false, is_critical: false, latitude: 13.007953, longitude: 80.220929, x: 250, y: 450, feeder: 'F3' },
+  { id: 'bus-24', number: 24, name: 'Bus 24', status: 'healthy', voltage_kv: 12.54, load_mw: 0.42, has_der: false, is_critical: true, critical_facility: 'Metro Water Treatment', latitude: 13.006991, longitude: 80.220479, x: 350, y: 450, feeder: 'F3' },
+  { id: 'bus-25', number: 25, name: 'Bus 25', status: 'healthy', voltage_kv: 12.52, load_mw: 0.42, has_der: false, is_critical: false, latitude: 13.005902, longitude: 80.218941, x: 450, y: 450, feeder: 'F3' },
   // Branch from Bus 6 (buses 26–33)
-  { id: 'bus-26', number: 26, name: 'Bus 26', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: false, x: 550, y: 450, feeder: 'F4' },
-  { id: 'bus-27', number: 27, name: 'Bus 27', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: false, x: 650, y: 450, feeder: 'F4' },
-  { id: 'bus-28', number: 28, name: 'Bus 28', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: false, x: 750, y: 450, feeder: 'F4' },
-  { id: 'bus-29', number: 29, name: 'Bus 29', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: true, critical_facility: 'Telecom Tower', x: 850, y: 450, feeder: 'F4' },
-  { id: 'bus-30', number: 30, name: 'Bus 30', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: false, x: 950, y: 450, feeder: 'F4' },
-  { id: 'bus-31', number: 31, name: 'Bus 31', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: false, x: 1050, y: 450, feeder: 'F4' },
-  { id: 'bus-32', number: 32, name: 'Bus 32', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: false, x: 1150, y: 450, feeder: 'F4' },
-  { id: 'bus-33', number: 33, name: 'Bus 33', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: true, is_critical: false, x: 1250, y: 450, feeder: 'F4' },
+  { id: 'bus-26', number: 26, name: 'Bus 26', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: false, latitude: 13.012221, longitude: 80.224090, x: 550, y: 450, feeder: 'F4' },
+  { id: 'bus-27', number: 27, name: 'Bus 27', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: true, critical_facility: 'Guindy Fire Station', latitude: 13.012964, longitude: 80.223098, x: 650, y: 450, feeder: 'F4' },
+  { id: 'bus-28', number: 28, name: 'Bus 28', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: false, latitude: 13.013828, longitude: 80.222193, x: 750, y: 450, feeder: 'F4' },
+  { id: 'bus-29', number: 29, name: 'Bus 29', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: false, latitude: 13.014859, longitude: 80.220783, x: 850, y: 450, feeder: 'F4' },
+  { id: 'bus-30', number: 30, name: 'Bus 30', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: true, critical_facility: 'Police Headquarters', latitude: 13.016454, longitude: 80.220058, x: 950, y: 450, feeder: 'F4' },
+  { id: 'bus-31', number: 31, name: 'Bus 31', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: false, latitude: 13.018102, longitude: 80.219099, x: 1050, y: 450, feeder: 'F4' },
+  { id: 'bus-32', number: 32, name: 'Bus 32', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: false, is_critical: false, latitude: 13.018945, longitude: 80.217892, x: 1150, y: 450, feeder: 'F4' },
+  { id: 'bus-33', number: 33, name: 'Bus 33', status: 'failed', voltage_kv: 0, load_mw: 0, has_der: true, is_critical: true, critical_facility: 'Guindy Metro Station', latitude: 13.020360, longitude: 80.216584, x: 1250, y: 450, feeder: 'F4' },
 ];
 
 export const mockLines: Line[] = [
@@ -120,13 +120,15 @@ export const mockScenario: Scenario = {
 };
 
 export const mockServices: CriticalService[] = [
-  { id: 'svc-1', name: 'Hospital', type: 'hospital', status: 'offline', load_mw: 2.4, priority: 1, bus_id: 'bus-9', backup_available: true, estimated_restore: '2024-11-27T18:00:00Z' },
-  { id: 'svc-2', name: 'Water Plant', type: 'water', status: 'offline', load_mw: 1.8, priority: 2, bus_id: 'bus-13', backup_available: false },
-  { id: 'svc-3', name: 'Telecom Tower', type: 'telecom', status: 'degraded', load_mw: 0.6, priority: 3, bus_id: 'bus-29', backup_available: true },
-  { id: 'svc-4', name: 'Emergency Center', type: 'emergency', status: 'online', load_mw: 0.8, priority: 1, bus_id: 'bus-24', backup_available: true },
-  { id: 'svc-5', name: 'Residential', type: 'residential', status: 'partially_supplied', load_mw: 3.2, priority: 4, bus_id: 'bus-10', backup_available: false },
-  { id: 'svc-6', name: 'Commercial', type: 'commercial', status: 'partially_supplied', load_mw: 1.6, priority: 5, bus_id: 'bus-11', backup_available: false },
-  { id: 'svc-7', name: 'Industrial', type: 'industrial', status: 'online', load_mw: 2.1, priority: 6, bus_id: 'bus-4', backup_available: true },
+  { id: 'svc-1', name: 'Apollo Hospital Guindy', type: 'hospital', status: 'offline', load_mw: 2.4, priority: 1, bus_id: 'bus-3', backup_available: true, estimated_restore: '2024-11-27T18:00:00Z' },
+  { id: 'svc-2', name: 'Metro Water Treatment', type: 'water', status: 'offline', load_mw: 1.8, priority: 2, bus_id: 'bus-24', backup_available: false },
+  { id: 'svc-3', name: 'BSNL Exchange Guindy', type: 'telecom', status: 'degraded', load_mw: 0.6, priority: 3, bus_id: 'bus-14', backup_available: true },
+  { id: 'svc-4', name: 'Guindy Fire Station', type: 'emergency', status: 'online', load_mw: 0.8, priority: 1, bus_id: 'bus-27', backup_available: true },
+  { id: 'svc-5', name: 'Velachery Residential Zone', type: 'residential', status: 'partially_supplied', load_mw: 3.2, priority: 4, bus_id: 'bus-8', backup_available: false },
+  { id: 'svc-6', name: 'Phoenix Marketcity Mall', type: 'commercial', status: 'partially_supplied', load_mw: 1.6, priority: 5, bus_id: 'bus-11', backup_available: false },
+  { id: 'svc-7', name: 'Guindy Industrial Estate', type: 'industrial', status: 'online', load_mw: 2.1, priority: 6, bus_id: 'bus-4', backup_available: true },
+  { id: 'svc-8', name: 'MIOT International', type: 'hospital', status: 'offline', load_mw: 3.5, priority: 1, bus_id: 'bus-7', backup_available: true },
+  { id: 'svc-9', name: 'Police Headquarters', type: 'emergency', status: 'online', load_mw: 1.2, priority: 1, bus_id: 'bus-30', backup_available: true }
 ];
 
 export const mockRecommendation: Recommendation = {
@@ -198,10 +200,10 @@ export const mockActivityLog: ActivityEntry[] = [
   { id: 'log-4', timestamp: '2024-11-27T14:25:00Z', type: 'alert', severity: 'error', message: 'Fault detected on Line L12-13 — tree contact', user: 'SCADA' },
   { id: 'log-5', timestamp: '2024-11-27T14:28:00Z', type: 'system', severity: 'info', message: 'Impact assessment initiated for Scenario: Severe Storm Event', user: 'GridGuard' },
   { id: 'log-6', timestamp: '2024-11-27T14:30:00Z', type: 'alert', severity: 'error', message: 'Fault detected on Line L25-26 — pole damage', user: 'SCADA' },
-  { id: 'log-7', timestamp: '2024-11-27T14:32:00Z', type: 'operator', severity: 'info', message: 'Beta Team dispatched to patrol Feeder F1', user: 'Operator Chen' },
+  { id: 'log-7', timestamp: '2024-11-27T14:32:00Z', type: 'operator', severity: 'info', message: 'Beta Team dispatched to patrol Feeder F1', user: 'Operator Sharma' },
   { id: 'log-8', timestamp: '2024-11-27T14:35:00Z', type: 'system', severity: 'success', message: 'Impact assessment complete — 4,520 customers affected, 3 critical facilities offline', user: 'GridGuard' },
   { id: 'log-9', timestamp: '2024-11-27T14:38:00Z', type: 'system', severity: 'info', message: 'Recovery recommendation generated: Inspect Transformer T3 (VOI = 0.87)', user: 'GridGuard' },
-  { id: 'log-10', timestamp: '2024-11-27T14:40:00Z', type: 'operator', severity: 'info', message: 'Gamma Team dispatched to respond to L25-26 fault', user: 'Operator Chen' },
+  { id: 'log-10', timestamp: '2024-11-27T14:40:00Z', type: 'operator', severity: 'info', message: 'Gamma Team dispatched to respond to L25-26 fault', user: 'Operator Sharma' },
 ];
 
 export const mockRiskAssessments: RiskAssessment[] = [

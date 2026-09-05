@@ -12,7 +12,7 @@ def test_network_status_returns_dict():
     state = get_state()
     status = get_network_status(state)
     assert isinstance(status, dict)
-    assert "available" in status
+    assert "pf_converged" in status
 
 
 def test_inspect_action_always_feasible():
@@ -43,8 +43,8 @@ def test_island_feasibility_check_small_load():
 
 def test_island_feasibility_check_large_load():
     """Large load (> 2.5 MW) downstream should be infeasible to island."""
-    feasible, reason = check_island_feasibility("FEEDER_B", get_state())
-    # FEEDER_B feeds multiple large loads → exceeds 2.5 MW
+    feasible, reason = check_island_feasibility("T3_LINE", get_state())
+    # T3_LINE feeds multiple large loads → exceeds 2.5 MW
     assert feasible is False
 
 

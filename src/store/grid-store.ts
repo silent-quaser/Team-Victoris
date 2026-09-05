@@ -25,6 +25,8 @@ interface GridStore {
   closeAssetDrawer: () => void;
   confirmAction: (actionId: string) => void;
   inspectT3: () => void;
+  islandHospital: () => void;
+  addLog: (message: string, severity?: 'info' | 'warning' | 'error' | 'success') => void;
 }
 
 export const useGridStore = create<GridStore>((set, get) => ({
@@ -43,10 +45,58 @@ export const useGridStore = create<GridStore>((set, get) => ({
   closeAssetDrawer: () =>
     set({ selectedAssetId: null, assetDrawerOpen: false }),
 
+  addLog: (message: string, severity: 'info' | 'warning' | 'error' | 'success' = 'info') => {
+    const newLogEntry: ActivityEntry = {
+      id: `log-${Date.now()}`,
+      timestamp: new Date().toISOString(),
+      type: 'operator',
+      severity,
+      message,
+      user: 'Operator Sharma',
+    };
+    set(state => ({ activityLog: [newLogEntry, ...state.activityLog] }));
+  },
+
   confirmAction: (actionId: string) => {
     if (actionId === 'action-1') {
       get().inspectT3();
+    } else if (actionId === 'action-5') {
+      get().islandHospital();
     }
+  },
+
+  islandHospital: () => {
+    const state = get();
+    
+    const updatedServices = state.gridState.services.map(s => 
+      s.name === 'Hospital' ? { ...s, status: 'online' as const } : s
+    );
+
+    const updatedBuses = state.gridState.buses.map(b => 
+      b.id === 'bus-9' ? { ...b, status: 'healthy' as const } : b
+    );
+
+    const newLogEntry: ActivityEntry = {
+      id: `log-${Date.now()}`,
+      timestamp: new Date().toISOString(),
+      type: 'action',
+      severity: 'success',
+      message: 'Hospital Microgrid successfully islanded. Critical load restored.',
+      user: 'Operator Sharma',
+    };
+
+    set({
+      gridState: {
+        ...state.gridState,
+        buses: updatedBuses,
+        services: updatedServices,
+        restoration: {
+          ...state.gridState.restoration,
+          pct_complete: 65,
+        }
+      },
+      activityLog: [newLogEntry, ...state.activityLog],
+    });
   },
 
   inspectT3: () => {
@@ -117,7 +167,7 @@ export const useGridStore = create<GridStore>((set, get) => ({
       type: 'action',
       severity: 'warning',
       message: 'Transformer T3 inspection complete — CONFIRMED FAILED. Insulation failure detected.',
-      user: 'Operator Chen',
+      user: 'Operator Sharma',
     };
 
     const newLogEntry2: ActivityEntry = {

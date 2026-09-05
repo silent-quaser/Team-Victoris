@@ -125,7 +125,6 @@ def predict_all_assets(
 
     Returns dict of asset_id → P(failed)
     """
-    from grid.ieee33 import LINE_METADATA
     from grid.grid_engine import get_net
 
     net = get_net()
@@ -161,7 +160,6 @@ def _physics_fallback(
     Uses the storm profile directly (not a hardcoded constant).
     """
     from scenario.profiles import get_profile
-    from grid.ieee33 import LINE_METADATA
 
     # Determine weather event type from severity
     severity = env.get("weather_severity", 0.3)
@@ -175,7 +173,7 @@ def _physics_fallback(
         event_type = "NORMAL"
 
     profile = get_profile(event_type)
-    meta = LINE_METADATA.get(line_idx, {"exposed": True, "age_factor": 1.3, "dist": 0.5})
+    meta = {"exposed": True, "age_factor": 1.3, "dist": 0.5}
 
     base_prob = profile.failure_prob_line(
         loading_pct=loading_pct,

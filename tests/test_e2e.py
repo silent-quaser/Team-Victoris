@@ -96,7 +96,7 @@ def test_actions_endpoint():
 
 
 def test_assets_endpoint():
-    r = client.get("/assets/T3")
+    r = client.get("/assets/T3_LINE")
     assert r.status_code == 200
     data = r.json()
     assert data["asset_id"] == "T3_LINE"
@@ -104,7 +104,7 @@ def test_assets_endpoint():
 
 
 def test_dependencies_endpoint():
-    r = client.get("/dependencies/T3")
+    r = client.get("/dependencies/T3_LINE")
     assert r.status_code == 200
     data = r.json()
     assert "downstream_nodes" in data
@@ -112,7 +112,7 @@ def test_dependencies_endpoint():
 
 
 def test_voi_endpoint():
-    r = client.get("/voi/T3")
+    r = client.get("/voi/T3_LINE")
     assert r.status_code == 200
     data = r.json()
     assert "voi" in data
@@ -179,7 +179,7 @@ def test_e2e_inspect_t3_failed():
     assert inspect_result["active_faults"] <= 4  # T3 fault type changed but not resolved
 
     # Step 3: verify T3 status in state
-    r3 = client.get("/assets/T3")
+    r3 = client.get("/assets/T3_LINE")
     assert r3.status_code == 200
     asset_data = r3.json()
     assert asset_data["status"] == "FAILED"
@@ -207,7 +207,7 @@ def test_e2e_inspect_t3_healthy():
     assert result["success"] is True
 
     # T3 should be healthy
-    r2 = client.get("/assets/T3")
+    r2 = client.get("/assets/T3_LINE")
     assert r2.json()["status"] == "HEALTHY"
 
     # Recommendation should now be something for the certain faults
@@ -225,7 +225,7 @@ def test_e2e_scenario_reset():
     assert r.status_code == 200
 
     # T3 should be uncertain again
-    r2 = client.get("/assets/T3")
+    r2 = client.get("/assets/T3_LINE")
     assert r2.json()["status"] == "UNCERTAIN"
 
     # Recommendation should be INSPECT T3 again

@@ -93,10 +93,10 @@ def test_execute_consumes_resources():
 def test_inject_fault():
     state = get_state()
     faults_before = len(state.faults)
-    fault = inject_fault("FEEDER_A", "OPEN_CIRCUIT", 1.0)
+    fault = inject_fault("LINE_3", "OPEN_CIRCUIT", 1.0)
     state_after = get_state()
     assert len(state_after.faults) == faults_before + 1
-    assert state_after.assets["FEEDER_A"].status == AssetStatus.FAILED
+    assert state_after.assets["LINE_3"].status == AssetStatus.FAILED
 
 
 def test_state_snapshot_is_independent():

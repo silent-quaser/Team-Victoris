@@ -139,7 +139,10 @@ def execute_action(action: ActionModel) -> Dict[str, Any]:
 
     # Sync with physical grid
     from grid.grid_engine import execute_simulated_action
-    execute_simulated_action(action.action_type.value, asset_id)
+    execute_simulated_action({
+        "action_type": action.action_type.value, 
+        "target_asset": asset_id
+    })
 
     # Update step counter
     state.step += 1
