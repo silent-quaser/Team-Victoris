@@ -2,8 +2,12 @@
 
 import React from 'react';
 import { Settings, Sliders, Monitor, Zap, Info, ShieldAlert } from 'lucide-react';
+import { useGridStore } from '@/store/grid-store';
 
 export default function SettingsPage() {
+  const settings = useGridStore((s) => s.settings);
+  const updateSettings = useGridStore((s) => s.updateSettings);
+
   return (
     <div className="flex flex-col gap-6 max-w-4xl mx-auto pb-10">
       <div>
@@ -46,7 +50,11 @@ export default function SettingsPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 items-center pt-4 border-t border-slate-100">
               <label className="text-sm font-medium text-slate-700">Simulation Mode</label>
               <div className="md:col-span-2">
-                <select className="w-full md:w-1/2 px-3 py-2 text-sm bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                <select 
+                  value={settings.simulationMode}
+                  onChange={(e) => updateSettings({ simulationMode: e.target.value as any })}
+                  className="w-full md:w-1/2 px-3 py-2 text-sm bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                >
                   <option value="local">Local Simulation</option>
                   <option value="connected">Connected (Live)</option>
                   <option value="historical">Historical Playback</option>
@@ -98,10 +106,14 @@ export default function SettingsPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 items-center">
               <label className="text-sm font-medium text-slate-700">Grid visualization</label>
               <div className="md:col-span-2">
-                <select className="w-full md:w-1/2 px-3 py-2 text-sm bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                <select 
+                  value={settings.gridVisualization}
+                  onChange={(e) => updateSettings({ gridVisualization: e.target.value as any })}
+                  className="w-full md:w-1/2 px-3 py-2 text-sm bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                >
                   <option value="network">Network Map View</option>
-                  <option value="schematic">Schematic One-Line</option>
-                  <option value="geospatial">Geospatial View</option>
+                  <option value="geo">Geospatial View</option>
+                  <option value="list">List View</option>
                 </select>
               </div>
             </div>

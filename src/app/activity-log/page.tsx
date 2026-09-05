@@ -9,11 +9,19 @@ type FilterType = 'all' | 'action' | 'alert' | 'system' | 'operator';
 export default function ActivityLogPage() {
   const activityLog = useGridStore((s) => s.activityLog);
   const [filter, setFilter] = useState<FilterType>('all');
+  const [searchQuery, setSearchQuery] = useState('');
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
-  const filteredLogs = filter === 'all' 
+  const baseFilteredLogs = filter === 'all' 
     ? activityLog 
     : activityLog.filter(log => log.type === filter);
+    
+  const filteredLogs = searchQuery.trim() === ''
+    ? baseFilteredLogs
+    : baseFilteredLogs.filter(log => 
+        log.message.toLowerCase().includes(searchQuery.toLowerCase()) || 
+        (log.user && log.user.toLowerCase().includes(searchQuery.toLowerCase()))
+      );
 
   const counts = {
     all: activityLog.length,
@@ -76,6 +84,8 @@ export default function ActivityLogPage() {
             <input 
               type="text" 
               placeholder="Search logs..." 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-9 pr-4 py-1.5 text-sm border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent w-48 lg:w-64"
             />
           </div>

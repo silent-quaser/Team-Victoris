@@ -1,14 +1,62 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { Search, Bell, AlertTriangle, CheckCircle, Info } from 'lucide-react';
 import { useGridStore } from '@/store/grid-store';
 
 export default function Header() {
+  const router = useRouter();
   const [showNotifications, setShowNotifications] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const activityLog = useGridStore(s => s.activityLog);
+  const { gridState, selectAsset, setCurrentPage } = useGridStore();
   const unreadCount = 3; // mock unread count
   const [currentTime, setCurrentTime] = useState<string>('');
+
+  const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && searchQuery.trim()) {
+      const query = searchQuery.toLowerCase().trim();
+      
+      // Page navigation
+      if (query.includes('setting')) {
+        setCurrentPage('settings');
+        router.push('/settings');
+        setSearchQuery('');
+        return;
+      }
+      if (query.includes('activity') || query.includes('log')) {
+        setCurrentPage('activity-log');
+        router.push('/activity-log');
+        setSearchQuery('');
+        return;
+      }
+      if (query.includes('overview') || query.includes('home')) {
+        setCurrentPage('overview');
+        router.push('/');
+        setSearchQuery('');
+        return;
+      }
+
+      // Asset search
+      const foundAsset = 
+        gridState.buses.find(b => b.id.toLowerCase() === query || b.name.toLowerCase().includes(query)) ||
+        gridState.transformers.find(t => t.id.toLowerCase() === query || t.name.toLowerCase().includes(query)) ||
+        gridState.lines.find(l => l.id.toLowerCase() === query);
+      
+      if (foundAsset) {
+        selectAsset(foundAsset.id);
+        setCurrentPage('overview');
+        router.push('/');
+        setSearchQuery('');
+        return;
+      }
+      
+      // Default to Activity Log search if no match
+      setCurrentPage('activity-log');
+      router.push('/activity-log');
+    }
+  };
 
   useEffect(() => {
     // Update time every minute
@@ -38,6 +86,9 @@ export default function Header() {
         />
         <input
           type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          onKeyDown={handleSearch}
           placeholder="Search grid assets, faults, or locations..."
           className="h-8 w-64 pl-8 pr-3 text-sm bg-slate-50 border border-slate-200 rounded-md
                      placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-all focus:w-80"

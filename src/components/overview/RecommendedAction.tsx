@@ -5,6 +5,7 @@ import { useGridStore } from '@/store/grid-store';
 export default function RecommendedAction() {
   const recommendation = useGridStore((s) => s.gridState.recommendation);
   const confirmAction = useGridStore((s) => s.confirmAction);
+  const simulateAction = useGridStore((s) => s.simulateAction);
 
   const impactColors: Record<string, string> = {
     high: 'text-red-600',
@@ -12,8 +13,20 @@ export default function RecommendedAction() {
     low: 'text-green-600',
   };
 
+  if (!recommendation) {
+    return (
+      <div className="bg-white border border-green-200 rounded-lg p-6 border-l-4 border-l-green-600 flex flex-col items-center justify-center h-full min-h-[200px]">
+        <div className="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-3">
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+        </div>
+        <h3 className="text-xl font-bold text-green-700 mb-1">Restoration Complete</h3>
+        <p className="text-sm text-green-600 text-center">All critical facilities and downstream loads have been successfully restored.</p>
+      </div>
+    );
+  }
+
   return (
-    <div className="bg-white border border-slate-200 rounded-lg p-4 border-l-4 border-l-blue-600">
+    <div className="bg-white border border-slate-200 rounded-lg p-4 border-l-4 border-l-blue-600 flex flex-col h-full">
       {/* Header row */}
       <div className="flex items-center justify-between mb-2">
         <span className="text-[10px] uppercase tracking-wider text-slate-400 font-medium">
@@ -79,7 +92,10 @@ export default function RecommendedAction() {
         >
           Confirm Action
         </button>
-        <button className="border border-slate-300 text-slate-700 text-sm px-4 py-1.5 rounded-md hover:bg-slate-50 transition-colors">
+        <button 
+          onClick={() => simulateAction(recommendation.action.id, recommendation.action.name)}
+          className="border border-slate-300 text-slate-700 text-sm px-4 py-1.5 rounded-md hover:bg-slate-50 transition-colors"
+        >
           Simulate
         </button>
         <button className="text-slate-500 text-sm px-3 py-1.5 hover:text-slate-700 transition-colors">

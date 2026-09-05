@@ -18,7 +18,7 @@ export default function GridCopilot() {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isTyping]);
 
-  const handleSend = (e?: React.FormEvent) => {
+  const handleSend = async (e?: React.FormEvent) => {
     e?.preventDefault();
     if (!input.trim()) return;
 
@@ -27,14 +27,37 @@ export default function GridCopilot() {
     setInput('');
     setIsTyping(true);
 
-    // Simulate "Smoke & Mirrors" LLM delay (1 to 2.5 seconds)
-    const delay = Math.random() * 1500 + 1000;
-    setTimeout(() => {
-      const responseText = generateCopilotResponse(userMsg.text);
-      const botMsg: ChatMessage = { id: Date.now().toString(), role: 'assistant', text: responseText };
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          message: userMsg.text,
+          context: { 
+            // We could pass gridStore context here in the future
+            gridStatus: "Grid has faults", 
+          }
+        })
+      });
+      
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to get response');
+      }
+
+      const botMsg: ChatMessage = { id: Date.now().toString(), role: 'assistant', text: data.text };
       setMessages(prev => [...prev, botMsg]);
+    } catch (error: any) {
+      const errorMsg: ChatMessage = { 
+        id: Date.now().toString(), 
+        role: 'assistant', 
+        text: `Error: ${error.message}. Make sure GROQ_API_KEY is set in your environment.` 
+      };
+      setMessages(prev => [...prev, errorMsg]);
+    } finally {
       setIsTyping(false);
-    }, delay);
+    }
   };
 
   return (

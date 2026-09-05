@@ -107,8 +107,9 @@ const nodeTypes = {
 };
 
 export default function GridVisualization() {
-  const { gridState, selectAsset, selectedAssetId } = useGridStore();
-  const [activeTab, setActiveTab] = useState<'network' | 'geo' | 'list'>('network');
+  const { gridState, selectAsset, selectedAssetId, settings, updateSettings } = useGridStore();
+  const activeTab = settings.gridVisualization;
+  const setActiveTab = (tab: 'network' | 'geo' | 'list') => updateSettings({ gridVisualization: tab });
   
   const [nodes, setNodes, onNodesChange] = useNodesState([] as Node[]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([] as Edge[]);
